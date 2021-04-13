@@ -7,11 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix --ext .js,.ts,.tsx --ignore-path .gitignore .",
-    "check-types": "tsc",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "validate": "npm-run-all --parallel check-types check-format lint build",
     "setup-db": "npx fauna-schema-migrate apply all",
     "clear-db": "node ./src/adapters/fauna/clear-db.mjs"
   },
@@ -39,6 +37,7 @@
     "@typescript-eslint/parser": "4.11.1",
     "autoprefixer": "10.1.0",
     "babel-eslint": "10.1.0",
+    "check-types": "^11.1.2",
     "eslint": "7.16.0",
     "eslint-config-prettier": "7.1.0",
     "eslint-config-react-app": "6.0.0",
@@ -57,11 +56,6 @@
     "prettier": "2.2.1",
     "tailwindcss": "2.0.2",
     "typescript": "4.1.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "CI=1 npm-run-all --parallel check-types && lint-staged"
-    }
   },
   "lint-staged": {
     "*.+(js|ts|tsx)": [
