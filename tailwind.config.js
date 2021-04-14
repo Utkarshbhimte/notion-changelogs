@@ -8,11 +8,11 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
-      sans: ['Inter', ...fontFamily.sans],
+      sans: [process.env.NEXT_PUBLIC_FONT, ...fontFamily.sans],
     },
     extend: {
       colors: {
-        violet: colors.violet,
+        brand: colors.indigo,
       },
     },
   },

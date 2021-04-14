@@ -20,13 +20,16 @@
     "@headlessui/react": "0.2.0",
     "check-types": "^11.1.2",
     "classnames": "2.2.6",
+    "deta": "^0.0.8",
     "faunadb": "4.1.1",
     "next": "10.0.4",
     "next-auth": "3.2.0",
+    "notion-client": "^4.4.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-notion-x": "^4.5.0",
     "react-query": "3.5.5",
-    "slugify": "1.4.6"
+    "slugify": "^1.4.6"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "0.2.0",

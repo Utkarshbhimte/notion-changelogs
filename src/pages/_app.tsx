@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Title suffix="Next Starter">{meta.metaTitle || meta.title}</Title>
         <Description>{description}</Description>
         <Meta />
-        <Layout {...layoutProps}>
+        <Layout {...layoutProps} {...pageProps}>
           <Component {...pageProps} />
         </Layout>
         <ReactQueryDevtools initialIsOpen={false} />

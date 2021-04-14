@@ -1,11 +1,11 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next'
 import { getMetaData } from 'src/libs/notion'
 
-const metadataHnadler: NextApiHandler = async (
+const metadataHandler: NextApiHandler = async (
   _req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  return res.send(getMetaData())
+  return res.send(await getMetaData())
 }
 
-export default metadataHnadler
+export default metadataHandler

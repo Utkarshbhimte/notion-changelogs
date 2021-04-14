@@ -19,6 +19,9 @@ export interface Value {
     created_time: number
     last_edited_time: number
     parent_id: string
+    format?: {
+        page_icon?: string
+    }
     parent_table: string
     alive: boolean
     created_by_table: string

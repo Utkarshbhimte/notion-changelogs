@@ -5,7 +5,7 @@ const GetPostHandler: NextApiHandler = async (
     _req: NextApiRequest,
     res: NextApiResponse
 ) => {
-    return res.send(getPostsList())
+    return res.send(await getPostsList())
 }
 
 export default GetPostHandler

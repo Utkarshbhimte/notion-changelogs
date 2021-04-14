@@ -101,7 +101,7 @@ export default function NavBar() {
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <a
-                className="flex items-center px-4 py-2 space-x-2 rounded-md hover:bg-violet-100 group"
+                className="flex items-center px-4 py-2 space-x-2 rounded-md hover:bg-brand-100 group"
                 href="https://github.com/pbteja1998/nextjs-starter"
                 target="_blank"
                 rel="noreferrer"
@@ -124,14 +124,14 @@ export default function NavBar() {
               ) : session ? (
                 <a
                   onClick={() => signOut()}
-                  className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-indigo-700"
+                  className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-brand-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-brand-700"
                 >
                   Sign Out
                 </a>
               ) : (
                 <a
                   onClick={() => signIn()}
-                  className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-indigo-700"
+                  className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-brand-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-brand-700"
                 >
                   Sign In
                 </a>
