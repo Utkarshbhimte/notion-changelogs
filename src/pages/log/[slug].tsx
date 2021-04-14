@@ -73,7 +73,8 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                     className="block rounded-2xl"
                     layout="fill"
                     objectFit="cover"
-                    src="https://images.unsplash.com/photo-1611095786283-c2f965646ef1?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
+                    src={postMetadata.thumbnail}
+                    // src="https://images.unsplash.com/photo-1611095786283-c2f965646ef1?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
                     alt="Banner"
                 />
             </div>

@@ -35,13 +35,14 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
           {
             metadata.primary_button_text && <div className="flex items-center justify-center mt-12">
               <a
-                href={metadata.primary_button_link}
+                href="#updates-wrap"
                 className="inline-flex items-center justify-center px-4 py-2 text-base font-medium  text-brand-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:text-brand-700"
               >
                 Checkout updates
               </a>
               <a
                 href={metadata.primary_button_link}
+                target="_blank"
                 className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-brand-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-brand-700"
               >
                 {metadata.primary_button_text}
@@ -51,7 +52,9 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
 
         </div>
 
-        <div className="grid gap-8 grid-cols-2 max-w-5xl mx-auto mt-12 pb-24">
+        <div
+          id="updates-wrap"
+          className="grid gap-8 grid-cols-2 max-w-5xl mx-auto mt-12 pb-24">
           {posts?.map(post => <PostCard key={post.id} post={post} />)}
         </div>
       </div>
@@ -61,6 +64,7 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
 
 export default Home
 
+// @ts-ignore
 Home.layoutProps = {
   Layout: HomeLayout,
 }
