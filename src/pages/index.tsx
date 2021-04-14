@@ -3,12 +3,12 @@ import { HomeLayout } from 'src/components/HomeLayout'
 import { PostCard } from 'src/components/PostCard'
 import { PageMetadata, Post } from 'src/contracts/app'
 import { db } from 'src/libs/db'
+import { getPostsList } from 'src/libs/notion'
 
 export const getStaticProps = async (context) => {
 
   const metadata: PageMetadata = await db.get(`metadata`)
-  const postRequest = await fetch(`http://localhost:3000/api/post`)
-  const posts = await postRequest.json()
+  const posts = await getPostsList()
 
   return {
     props: {
