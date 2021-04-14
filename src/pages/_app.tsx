@@ -1,17 +1,14 @@
+import { Description, Meta, Title } from '@/components'
+import ProgressBar from '@badrap/bar-of-progress'
+import type { AppProps } from 'next/app'
+import { Router } from 'next/router'
+import React from 'react'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { Provider } from 'next-auth/client'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
-import { Title, Description, Meta } from '@/components'
-import React from 'react'
-import ProgressBar from '@badrap/bar-of-progress'
-import { Router } from 'next/router'
 
 const progress = new ProgressBar({
   size: 2,
-  color: '#22D3EE',
+  color: process.env.NEXT_PUBLIC_LOADER_COLOR || '#22D3EE',
   className: 'bar-of-progress',
   delay: 100,
 })
@@ -26,11 +23,9 @@ Router.events.on('routeChangeComplete', () => {
   progress.finish()
 
   // Will not work if scroll is not on <html>
-  window.scrollTo(0, 0)
+  setTimeout(() => window.scrollTo(0, 0), 500)
 })
 Router.events.on('routeChangeError', progress.finish)
-
-const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
   const Layout = (Component as any).layoutProps?.Layout || React.Fragment
@@ -38,23 +33,22 @@ function MyApp({ Component, pageProps }: AppProps) {
     ? { layoutProps: (Component as any).layoutProps }
     : {}
   const meta = (Component as any).layoutProps?.meta || {}
+
   const description =
-    meta.metaDescription ||
+    pageProps.meta?.description ||
     meta.description ||
-    'A Next.js starter kit template with React 17 + Typescript + Tailwind CSS 2 + React Query 3 + GitHub Auth + Passwordless Auth + Fauna DB'
+    process.env.NEXT_PUBLIC_DEFAULT_DESC ||
+    `Discover new updates and improvements to ${process.env.NEXT_PUBLIC_APP_NAME}`
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider session={pageProps.session}>
-        <Title suffix="Next Starter">{meta.metaTitle || meta.title}</Title>
-        <Description>{description}</Description>
-        <Meta />
-        <Layout {...layoutProps} {...pageProps}>
-          <Component {...pageProps} />
-        </Layout>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </Provider>
-    </QueryClientProvider>
+    <>
+      <Title>{pageProps.meta?.title || meta.title}</Title>
+      <Description>{description}</Description>
+      <Meta />
+      <Layout {...layoutProps} {...pageProps}>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   )
 }
 

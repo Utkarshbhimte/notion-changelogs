@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 export default function Title({
-  suffix = 'Next Starter',
+  suffix = process.env.NEXT_PUBLIC_APP_NAME,
   children,
 }: {
   suffix?: string

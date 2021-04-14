@@ -8,7 +8,7 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
-      sans: [process.env.NEXT_PUBLIC_FONT, ...fontFamily.sans],
+      sans: ['Inter', ...fontFamily.sans],
     },
     extend: {
       colors: {

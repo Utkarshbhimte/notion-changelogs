@@ -7,12 +7,12 @@ export const HomeLayout: React.FC<{ metadata: PageMetadata }> = ({ children, met
         <>
             <nav className="py-4">
                 <div className="container mx-auto">
-                    <div className="flex justify-content items-center">
+                    <div className="flex justify-content items-center cursor-pointer">
                         <Link href="/">
                             <Image
-                                width={32}
-                                height={32}
-                                src={metadata.icon}
+                                width={48}
+                                height={48}
+                                src="/logo.svg"
                                 alt={metadata.app_name}
                             />
                         </Link>

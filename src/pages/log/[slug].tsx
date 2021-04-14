@@ -1,13 +1,12 @@
+import Image from 'next/image'
 import { NotionAPI } from 'notion-client'
+import { ExtendedRecordMap } from 'notion-types'
 import React from 'react'
+import { NotionRenderer } from 'react-notion-x'
+import { HomeLayout } from 'src/components/HomeLayout'
 import { PageMetadata, Post } from 'src/contracts/app'
 import { db } from 'src/libs/db'
 import { getPostsList } from 'src/libs/notion'
-import { ExtendedRecordMap } from 'notion-types'
-import { HomeLayout } from 'src/components/HomeLayout'
-import Image from 'next/image'
-import { NotionRenderer } from 'react-notion-x'
-import Link from 'next/link'
 
 export const getStaticProps = async (context) => {
     const notion = new NotionAPI()
@@ -19,7 +18,14 @@ export const getStaticProps = async (context) => {
     const data = await notion.getPage(postMetadata.id)
 
     return {
-        props: { postMetadata, data, metadata },
+        props: {
+            postMetadata,
+            data,
+            metadata,
+            meta: {
+                title: postMetadata.title,
+            }
+        },
         revalidate: 10
     }
 }
