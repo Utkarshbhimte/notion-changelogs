@@ -1,4 +1,3 @@
-import { MapImageUrl } from "notion-types"
 import slugify from "slugify"
 import { PageMetadata, Post } from "src/contracts/app"
 import { NotionResponse, NotionSection } from "src/contracts/notion"
