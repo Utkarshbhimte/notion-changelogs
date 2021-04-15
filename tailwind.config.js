@@ -12,7 +12,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        brand: colors.indigo,
+        brand: colors.emerald,
       },
     },
   },

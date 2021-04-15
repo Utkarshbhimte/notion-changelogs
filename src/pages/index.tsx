@@ -35,14 +35,14 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
             metadata.primary_button_text && <div className="flex items-center justify-center mt-12">
               <a
                 href="#updates-wrap"
-                className="inline-flex items-center justify-center px-4 py-2 text-base font-medium  text-brand-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:text-brand-700"
+                className="inline-flex items-center justify-center px-4 py-2 text-base font-medium  text-brand-800 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:text-brand-900"
               >
                 Checkout updates
               </a>
               <a
                 href={metadata.primary_button_link}
                 target="_blank"
-                className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-brand-600 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-brand-700"
+                className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-brand-800 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:bg-brand-900"
               >
                 {metadata.primary_button_text}
               </a>

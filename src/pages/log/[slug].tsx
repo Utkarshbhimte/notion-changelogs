@@ -60,7 +60,7 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                 <span className="ml-4 block">Back to Homepage</span>
             </div> */}
             <div className="my-4">
-                <span className="uppercase text-sm text-brand-500 font-bold tracking-wide">{postMetadata.tag}</span>
+                <span className="uppercase text-sm text-brand-800 font-bold tracking-wide">{postMetadata.tag}</span>
                 <span className="text-sm text-gray-500 ml-4 pl-4 border-l border-gray-500 tracking-wide">
                     {new Intl.DateTimeFormat('en-US', {
                         year: 'numeric', month: 'long', day: 'numeric'

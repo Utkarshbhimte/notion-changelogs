@@ -22,7 +22,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <div className="px-4 flex justify-between items-center">
                 <div>
                     <div>
-                        <span className="uppercase text-sm text-brand-500 font-bold tracking-wide">{post.tag}</span>
+                        <span className="uppercase text-sm text-brand-800 font-bold tracking-wide">{post.tag}</span>
                         <span className="text-sm text-gray-500 ml-4 pl-4 border-l border-gray-500 tracking-wide">
                             {new Intl.DateTimeFormat('en-US', {
                                 year: 'numeric', month: 'long', day: 'numeric'
@@ -32,7 +32,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
                     <h3 className="text-xl font-bold mt-2">{post.title}</h3>
                 </div>
 
-                <div className="text-brand-600 opacity-0 transition ease-in-out duration-300 -translate-x-4 transform show-on-hover">
+                <div className="text-brand-800 opacity-0 transition ease-in-out duration-300 -translate-x-4 transform show-on-hover">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor"
