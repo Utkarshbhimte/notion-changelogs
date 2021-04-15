@@ -33,3 +33,24 @@
 html {
   scroll-behavior: smooth;
 }
+
+.thumbnail-back:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  @apply bg-brand-500;
+  @apply rounded-2xl;
+  @apply transform;
+  @apply transform-gpu;  
+  @apply transition-transform;  
+  @apply duration-300;  
+}
+
+.thumbnail-back:hover:before{
+  @apply translate-x-2;
+  @apply translate-y-2;
+}

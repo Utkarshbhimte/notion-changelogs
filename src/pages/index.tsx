@@ -5,7 +5,7 @@ import { PageMetadata, Post } from 'src/contracts/app'
 import { db } from 'src/libs/db'
 import { getPostsList } from 'src/libs/notion'
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
 
   const metadata: PageMetadata = await db.get(`metadata`)
   const posts = await getPostsList()
@@ -21,7 +21,6 @@ export const getStaticProps = async (context) => {
 interface HomeProps {
   metadata: PageMetadata;
   posts: Post[]
-
 }
 
 const Home: React.FC<HomeProps> = ({ metadata, posts }) => {

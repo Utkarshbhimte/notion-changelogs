@@ -7,18 +7,15 @@ interface PostCardProps {
     post: Post
 }
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
-
-
-    return <Link href={`/log/${post.slug}`}>
+    console.log("🚀 ~ file: PostCard.tsx ~ line 19 ~ post.thumbnail", post.thumbnail)
+    return <Link prefetch href={`/log/${post.slug}`}>
         <div className="cursor-pointer hover-trigger">
-            <div className="relative h-72 mb-4">
+            <div className="relative h-72 mb-4 thumbnail-back">
                 <Image
                     className="rounded-2xl shadow-md block"
                     layout="fill"
                     objectFit="cover"
-                    // src="https://images.unsplash.com/photo-1611095786283-c2f965646ef1?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
                     src={post.thumbnail}
-                // alt={post.thumbnail}
                 />
             </div>
 
