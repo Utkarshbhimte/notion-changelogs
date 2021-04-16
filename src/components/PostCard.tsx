@@ -10,7 +10,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
     console.log("🚀 ~ file: PostCard.tsx ~ line 19 ~ post.thumbnail", post.thumbnail)
     return <Link prefetch href={`/log/${post.slug}`}>
         <div className="cursor-pointer hover-trigger">
-            <div className="relative h-72 mb-4 thumbnail-back">
+            <div className="relative h-80 mb-4 thumbnail-back">
                 <Image
                     className="rounded-2xl shadow-md block"
                     layout="fill"

@@ -3,6 +3,7 @@ import ProgressBar from '@badrap/bar-of-progress'
 import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import React from 'react'
+import Banner from 'src/components/seo/Banner'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 
@@ -44,6 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Title>{pageProps.meta?.title || meta.title}</Title>
       <Description>{description}</Description>
+      <Banner url={pageProps.meta?.image || meta.image} />
       <Meta />
       <Layout {...layoutProps} {...pageProps}>
         <Component {...pageProps} />

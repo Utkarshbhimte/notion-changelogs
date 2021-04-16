@@ -53,7 +53,7 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
 
         <div
           id="updates-wrap"
-          className="grid gap-8 grid-cols-2 max-w-5xl mx-auto mt-12 pb-24">
+          className="grid gap-8 grid-cols-2 mx-auto mt-12 pb-24">
           {posts?.map(post => <PostCard key={post.id} post={post} />)}
         </div>
       </div>

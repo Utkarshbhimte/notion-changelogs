@@ -6,6 +6,7 @@ import { NotionRenderer } from 'react-notion-x'
 import { HomeLayout } from 'src/components/HomeLayout'
 import { PageMetadata, Post } from 'src/contracts/app'
 import { db } from 'src/libs/db'
+import { getAbsoluteURL } from 'src/libs/getAbsoluteUrl'
 import { getPostsList } from 'src/libs/notion'
 
 export const getStaticProps = async (context) => {
@@ -24,6 +25,7 @@ export const getStaticProps = async (context) => {
             metadata,
             meta: {
                 title: postMetadata.title,
+                image: getAbsoluteURL(`/api/banner?slug=${postMetadata.slug}`)
             }
         },
         revalidate: 10
@@ -59,6 +61,19 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                 </Link>
                 <span className="ml-4 block">Back to Homepage</span>
             </div> */}
+            <div className="relative h-96 my-6 shadow-lg rounded-2xl text-gray-500 flex items-center justify-center overflow-hidden" style={{ background: 'url(/gradient-background.jpg)' }}>
+                <div className=" translate-y-12 transform">
+                    <Image
+                        className="block rounded-2xl"
+                        objectFit="cover"
+                        width={650}
+                        height={350}
+                        src={postMetadata.thumbnail}
+                        alt="Banner"
+                    />
+                </div>
+            </div>
+            <h1 className="text-6xl font-bold">{postMetadata.title}</h1>
             <div className="my-4">
                 <span className="uppercase text-sm text-brand-800 font-bold tracking-wide">{postMetadata.tag}</span>
                 <span className="text-sm text-gray-500 ml-4 pl-4 border-l border-gray-500 tracking-wide">
@@ -67,17 +82,8 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                     }).format(new Date(postMetadata.created))}
                 </span>
             </div>
-            <h1 className="text-6xl font-bold">{postMetadata.title}</h1>
-            <div className="relative h-96 my-12 shadow-lg rounded-2xl text-gray-500">
-                <Image
-                    className="block rounded-2xl"
-                    layout="fill"
-                    objectFit="cover"
-                    src={postMetadata.thumbnail}
-                    alt="Banner"
-                />
-            </div>
-            <div className="max-w-3xl mx-auto">
+
+            <div className="max-w-3xl mx-auto my-16">
                 {/* Add animate presence here */}
                 <NotionRenderer recordMap={data} fullPage={false} darkMode={false} />
 

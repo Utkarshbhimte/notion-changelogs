@@ -26,6 +26,7 @@
     "next": "10.0.4",
     "next-auth": "3.2.0",
     "notion-client": "^4.4.0",
+    "playwright": "^1.10.0",
     "playwright-aws-lambda": "^0.6.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",

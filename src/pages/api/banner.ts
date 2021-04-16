@@ -12,7 +12,7 @@ export default async (req, res) => {
         }
     });
     // Generate the full URL out of the given path (GET parameter)
-    const url = getAbsoluteURL(req.query["path"] || "")
+    const url = getAbsoluteURL(`/post-image/${req.query.slug}` || "")
     await page.goto(url, {
         timeout: 15 * 1000
     })
