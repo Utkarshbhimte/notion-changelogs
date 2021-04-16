@@ -3,8 +3,8 @@ import { Post } from 'src/contracts/app'
 import { db } from 'src/libs/db'
 import { getPostsList } from 'src/libs/notion'
 
-export const getStaticProps = async (context) => {
-    const { slug } = context.params
+export const getServerSideProps = async (context) => {
+    const { slug } = context.query
 
     const postMetadata: Post = await db.get(`post::${slug}`)
 
@@ -12,19 +12,8 @@ export const getStaticProps = async (context) => {
         props: {
             post: postMetadata,
         },
-        revalidate: 10
     }
 }
-
-export async function getStaticPaths() {
-    const posts = await getPostsList()
-
-    return {
-        paths: posts.map(post => '/post-image/' + post.slug),
-        fallback: true,
-    }
-}
-
 
 interface PostImageProps {
     post: Post

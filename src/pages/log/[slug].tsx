@@ -9,6 +9,11 @@ import { db } from 'src/libs/db'
 import { getAbsoluteURL } from 'src/libs/getAbsoluteUrl'
 import { getPostsList } from 'src/libs/notion'
 
+import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import path from 'path';
+import { generateOgImage } from 'src/libs/generateOgImage'
+
+
 export const getStaticProps = async (context) => {
     const notion = new NotionAPI()
 
@@ -18,6 +23,24 @@ export const getStaticProps = async (context) => {
     const postMetadata: Post = await db.get(`post::${slug}`)
     const data = await notion.getPage(postMetadata.id)
 
+
+    // generating 
+    const dir = path.resolve('public', 'og');
+    const filepath = path.resolve(dir, `${slug}.png`);
+
+    // check if directory doesn't exist, if it doesn't, we create it
+    if (!existsSync(dir)) {
+        mkdirSync(dir);
+    }
+
+    // check if the image already exists, if it does we don't need to generate it again
+    if (!existsSync(filepath)) {
+        const imgBuffer = await generateOgImage(postMetadata.slug)
+        writeFileSync(filepath, imgBuffer);
+    }
+
+    const image = getAbsoluteURL(`/og/${postMetadata.slug}.png`)
+
     return {
         props: {
             postMetadata,
@@ -25,7 +48,7 @@ export const getStaticProps = async (context) => {
             metadata,
             meta: {
                 title: postMetadata.title,
-                image: getAbsoluteURL(`/api/banner?slug=${postMetadata.slug}`)
+                image
             }
         },
         revalidate: 10
