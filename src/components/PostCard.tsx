@@ -13,7 +13,6 @@ interface PostCardProps {
     post: Post
 }
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
-    console.log("🚀 ~ file: PostCard.tsx ~ line 19 ~ post.thumbnail", post.thumbnail)
     return <Link prefetch href={`/log/${post.slug}`}>
         <motion.div
             variants={item}
