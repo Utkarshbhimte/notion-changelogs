@@ -84,8 +84,8 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                 </Link>
                 <span className="ml-4 block">Back to Homepage</span>
             </div> */}
-            <div className="relative h-96 my-6 shadow-lg rounded-2xl text-gray-500 flex items-center justify-center overflow-hidden" style={{ background: 'url(/gradient-background.jpg)' }}>
-                <div className=" translate-y-12 transform">
+            <div className="relative md:h-96 my-6 shadow-lg rounded-2xl text-gray-500 flex items-center justify-center overflow-hidden" style={{ background: 'url(/gradient-background.jpg)' }}>
+                <div className="md:translate-y-12 transform">
                     <Image
                         className="block rounded-2xl"
                         objectFit="cover"
@@ -96,7 +96,7 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                     />
                 </div>
             </div>
-            <h1 className="text-6xl font-bold">{postMetadata.title}</h1>
+            <h1 className="md:text-6xl text-4xl font-bold">{postMetadata.title}</h1>
             <div className="my-4">
                 <span className="uppercase text-sm text-brand-800 font-bold tracking-wide">{postMetadata.tag}</span>
                 <span className="text-sm text-gray-500 ml-4 pl-4 border-l border-gray-500 tracking-wide">
@@ -106,7 +106,7 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                 </span>
             </div>
 
-            <div className="max-w-3xl mx-auto my-16">
+            <div className="max-w-3xl mx-auto md:my-16 my-6">
                 {/* Add animate presence here */}
                 <NotionRenderer recordMap={data} fullPage={false} darkMode={false} />
 
