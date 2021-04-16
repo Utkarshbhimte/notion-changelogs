@@ -24,7 +24,7 @@ Router.events.on('routeChangeComplete', () => {
   progress.finish()
 
   // Will not work if scroll is not on <html>
-  setTimeout(() => window.scrollTo(0, 0), 500)
+  window.scrollTo(0, 0)
 })
 Router.events.on('routeChangeError', progress.finish)
 
