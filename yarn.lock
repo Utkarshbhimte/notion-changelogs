@@ -6051,7 +6051,7 @@
   dependencies:
     "lambdafs" "^1.3.0"
 
-"playwright-core@^1":
+"playwright-core@^1", "playwright-core@^1.10.0":
   "integrity" "sha512-SDA5KPwnJJSfnNX/b7h8y0ChwBmcbbcCofYXkZGMVuzXZsmHPGLOBRhgkwN2nzJ10Ezf4cd1OcVOeOLKPxjeRg=="
   "resolved" "https://registry.npmjs.org/playwright-core/-/playwright-core-1.10.0.tgz"
   "version" "1.10.0"
