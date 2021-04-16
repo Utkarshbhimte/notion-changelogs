@@ -54,3 +54,6 @@ html {
   @apply translate-x-2;
   @apply translate-y-2;
 }
+.notion-viewport{
+  z-index: -1;
+}

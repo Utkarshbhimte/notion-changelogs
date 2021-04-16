@@ -7,19 +7,19 @@ const metadataHandler: NextApiHandler = async (
     res: NextApiResponse
 ) => {
 
-    if (process.env.NODE_ENV !== 'production') {
-
-        // Implement simple password protection for cloud migrations
-        if (!process.env.NEXT_PUBLIC_DEPLOY_PASSWORD) {
-            throw new Error("The password is not set yet, you have to add it to your vercel project as NEXT_PUBLIC_DEPLOY_PASSWORD")
-        }
-
-        if (!req.query.password) {
-            throw new Error("You have to pass the password in the query params as well with password as key, Refer the docs for more info")
-        }
-    }
-
     try {
+        if (process.env.NODE_ENV !== 'development') {
+
+            // Implement simple password protection for cloud migrations
+            if (!process.env.NEXT_PUBLIC_DEPLOY_PASSWORD) {
+                throw new Error("The password is not set yet, you have to add it to your vercel project as NEXT_PUBLIC_DEPLOY_PASSWORD")
+            }
+
+            if (!req.query.password) {
+                throw new Error("You have to pass the password in the query params as well with password as key, Refer the docs for more info")
+            }
+        }
+
         const metadata = await getMetaData()
         await db.put({ ...metadata, key: `metadata` })
 

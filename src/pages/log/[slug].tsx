@@ -70,27 +70,15 @@ interface ChangelogPageProps {
     metadata: PageMetadata
 }
 const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => {
-    const AnimatedImage = motion(Image)
+    console.log("🚀 ~ file: [slug].tsx ~ line 88 ~ postMetadata.thumbnail", postMetadata.thumbnail)
     return <div className="min-h-screen">
         <div className="container mx-auto my-8">
-            {/* <div
-                className="text-gray-500 cursor-pointer flex mb-12"
-            >
-                <Link href="/">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-                    </svg>
-                </Link>
-                <span className="ml-4 block">Back to Homepage</span>
-            </div> */}
             <div className="relative md:h-96 my-6 shadow-lg rounded-2xl text-gray-500 flex items-center justify-center overflow-hidden" style={{ background: 'url(/gradient-background.jpg)' }}>
                 <motion.div
                     initial={{ y: 100, opacity: 0 }}
                     animate={{ y: 40, opacity: 1 }}
                     transition={{ delay: .5, duration: .3 }}
                     className="md:translate-y-12 transform"
-
                 >
                     <Image
                         className="block rounded-2xl"

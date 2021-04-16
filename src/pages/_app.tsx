@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion"
 
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
+import 'react-notion-x/src/styles.css'
 
 const progress = new ProgressBar({
   size: 2,
