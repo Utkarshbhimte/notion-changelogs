@@ -1,17 +1,17 @@
+import { motion } from 'framer-motion'
+import { existsSync, mkdirSync, writeFileSync } from 'fs'
 import Image from 'next/image'
-import { NotionAPI } from 'notion-client'
+import { NotionAPI, } from 'notion-client'
 import { ExtendedRecordMap } from 'notion-types'
+import path from 'path'
 import React from 'react'
-import { NotionRenderer } from 'react-notion-x'
+import { NotionRenderer, CollectionRow } from 'react-notion-x'
 import { HomeLayout } from 'src/components/HomeLayout'
 import { PageMetadata, Post } from 'src/contracts/app'
 import { db } from 'src/libs/db'
+import { generateOgImage } from 'src/libs/generateOgImage'
 import { getAbsoluteURL } from 'src/libs/getAbsoluteUrl'
 import { getPostsList } from 'src/libs/notion'
-import { motion } from 'framer-motion'
-import { writeFileSync, existsSync, mkdirSync } from 'fs';
-import path from 'path';
-import { generateOgImage } from 'src/libs/generateOgImage'
 
 
 export const getStaticProps = async (context) => {
@@ -114,7 +114,7 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                 transition={{ duration: 1, delay: 1 }}
                 className="max-w-3xl mx-auto md:my-16 my-6">
                 {/* Add animate presence here */}
-                <NotionRenderer recordMap={data} fullPage={false} darkMode={false} />
+                <NotionRenderer recordMap={data} fullPage={false} darkMode={false} components={{ collectionRow: CollectionRow }} />
 
             </motion.div>
         </div>

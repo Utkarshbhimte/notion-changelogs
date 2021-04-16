@@ -57,3 +57,7 @@ html {
 .notion-viewport{
   z-index: -1;
 }
+
+.notion-collection-row{
+  display: none;
+}
