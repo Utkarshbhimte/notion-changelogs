@@ -20,11 +20,6 @@ export default function Meta() {
       />
       <meta key="twitter:site" name="twitter:site" content={process.env.NEXT_PUBLIC_TWITTER_USERNAME} />
       <meta
-        key="twitter:image"
-        name="twitter:image"
-        content={getAbsoluteURL('/logo.svg')}
-      />
-      <meta
         key="twitter:creator"
         name="twitter:creator"
         content={process.env.NEXT_PUBLIC_TWITTER_USERNAME}
@@ -35,12 +30,7 @@ export default function Meta() {
         content={getAbsoluteURL(router.pathname)}
       />
       <meta key="og:type" property="og:type" content="website" />
-      <meta
-        key="og:image"
-        property="og:image"
-        content={getAbsoluteURL('/logo.svg')}
-      />
-
+      <meta name="twitter:card" content="summary_large_image" />
       <link
         rel="preload"
         href="/fonts/inter-var-latin.woff2"
