@@ -2,6 +2,12 @@ import React from "react"
 import { Post } from "src/contracts/app"
 import Link from "next/link"
 import Image from "next/image"
+import { motion } from 'framer-motion'
+
+const item = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 }
+}
 
 interface PostCardProps {
     post: Post
@@ -9,7 +15,9 @@ interface PostCardProps {
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
     console.log("🚀 ~ file: PostCard.tsx ~ line 19 ~ post.thumbnail", post.thumbnail)
     return <Link prefetch href={`/log/${post.slug}`}>
-        <div className="cursor-pointer hover-trigger">
+        <motion.div
+            variants={item}
+            className="cursor-pointer hover-trigger">
             <div className="relative h-80 mb-4 thumbnail-back">
                 <Image
                     className="rounded-2xl shadow-md block"
@@ -42,6 +50,6 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 </div>
             </div>
 
-        </div>
+        </motion.div>
     </Link>
 }

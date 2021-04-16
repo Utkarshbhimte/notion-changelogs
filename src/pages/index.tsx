@@ -4,6 +4,7 @@ import { PostCard } from 'src/components/PostCard'
 import { PageMetadata, Post } from 'src/contracts/app'
 import { db } from 'src/libs/db'
 import { getPostsList } from 'src/libs/notion'
+import { motion } from 'framer-motion'
 
 export const getStaticProps = async () => {
 
@@ -21,6 +22,16 @@ export const getStaticProps = async () => {
 interface HomeProps {
   metadata: PageMetadata;
   posts: Post[]
+}
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5
+    }
+  }
 }
 
 const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
@@ -51,11 +62,14 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
 
         </div>
 
-        <div
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
           id="updates-wrap"
           className="grid gap-8 md:grid-cols-2 grid-cols-1 mx-auto mt-12 pb-24">
           {posts?.map(post => <PostCard key={post.id} post={post} />)}
-        </div>
+        </motion.div>
       </div>
     </div>
   )

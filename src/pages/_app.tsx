@@ -4,6 +4,8 @@ import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import React from 'react'
 import Banner from 'src/components/seo/Banner'
+import { AnimatePresence } from "framer-motion"
+
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 
@@ -47,9 +49,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Description>{description}</Description>
       <Banner url={pageProps.meta?.image || meta.image} />
       <Meta />
-      <Layout {...layoutProps} {...pageProps}>
-        <Component {...pageProps} />
-      </Layout>
+      <AnimatePresence exitBeforeEnter>
+        <Layout {...layoutProps} {...pageProps}>
+          <Component {...pageProps} />
+        </Layout>
+      </AnimatePresence>
     </>
   )
 }

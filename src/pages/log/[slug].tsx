@@ -8,7 +8,7 @@ import { PageMetadata, Post } from 'src/contracts/app'
 import { db } from 'src/libs/db'
 import { getAbsoluteURL } from 'src/libs/getAbsoluteUrl'
 import { getPostsList } from 'src/libs/notion'
-
+import { motion } from 'framer-motion'
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 import path from 'path';
 import { generateOgImage } from 'src/libs/generateOgImage'
@@ -70,7 +70,7 @@ interface ChangelogPageProps {
     metadata: PageMetadata
 }
 const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => {
-
+    const AnimatedImage = motion(Image)
     return <div className="min-h-screen">
         <div className="container mx-auto my-8">
             {/* <div
@@ -85,7 +85,13 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                 <span className="ml-4 block">Back to Homepage</span>
             </div> */}
             <div className="relative md:h-96 my-6 shadow-lg rounded-2xl text-gray-500 flex items-center justify-center overflow-hidden" style={{ background: 'url(/gradient-background.jpg)' }}>
-                <div className="md:translate-y-12 transform">
+                <motion.div
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 40, opacity: 1 }}
+                    transition={{ delay: .5, duration: .3 }}
+                    className="md:translate-y-12 transform"
+
+                >
                     <Image
                         className="block rounded-2xl"
                         objectFit="cover"
@@ -94,23 +100,35 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                         src={postMetadata.thumbnail}
                         alt="Banner"
                     />
+                </motion.div>
+            </div>
+            <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 40 }}
+                transition={{ duration: 1, delay: .25 }}
+            >
+                <h1 className="md:text-6xl text-4xl font-bold">{postMetadata.title}</h1>
+                <div className="my-4">
+                    <span className="uppercase text-sm text-brand-800 font-bold tracking-wide">{postMetadata.tag}</span>
+                    <span className="text-sm text-gray-500 ml-4 pl-4 border-l border-gray-500 tracking-wide">
+                        {new Intl.DateTimeFormat('en-US', {
+                            year: 'numeric', month: 'long', day: 'numeric'
+                        }).format(new Date(postMetadata.created))}
+                    </span>
                 </div>
-            </div>
-            <h1 className="md:text-6xl text-4xl font-bold">{postMetadata.title}</h1>
-            <div className="my-4">
-                <span className="uppercase text-sm text-brand-800 font-bold tracking-wide">{postMetadata.tag}</span>
-                <span className="text-sm text-gray-500 ml-4 pl-4 border-l border-gray-500 tracking-wide">
-                    {new Intl.DateTimeFormat('en-US', {
-                        year: 'numeric', month: 'long', day: 'numeric'
-                    }).format(new Date(postMetadata.created))}
-                </span>
-            </div>
+            </motion.div>
 
-            <div className="max-w-3xl mx-auto md:my-16 my-6">
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 40 }}
+                transition={{ duration: 1, delay: 1 }}
+                className="max-w-3xl mx-auto md:my-16 my-6">
                 {/* Add animate presence here */}
                 <NotionRenderer recordMap={data} fullPage={false} darkMode={false} />
 
-            </div>
+            </motion.div>
         </div>
     </div>
 }
