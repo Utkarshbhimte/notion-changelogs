@@ -17,10 +17,14 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
     return <Link prefetch href={`/log/${post.slug}`}>
         <motion.div
             variants={item}
-            className="cursor-pointer hover-trigger">
-            <div className="relative h-80 mb-4 thumbnail-back">
+            className="cursor-pointer hover-trigger"
+        >
+            <div
+                className="relative h-80 mb-4 thumbnail-back rounded-2xl shadow-md"
+            // style={{ background: 'url(/gradient-background.jpg)' }}
+            >
                 <Image
-                    className="rounded-2xl shadow-md block"
+                    className="rounded-2xl block"
                     layout="fill"
                     objectFit="cover"
                     src={post.thumbnail}

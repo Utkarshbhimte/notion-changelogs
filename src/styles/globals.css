@@ -34,6 +34,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.thumbnail-back{
+  @apply border;
+  @apply border-brand-100;
+}
+
 .thumbnail-back:before {
   content: '';
   display: block;
@@ -42,7 +47,8 @@ html {
   left: 0;
   height: 100%;
   width: 100%;
-  @apply bg-brand-800;
+  z-index: -1;
+  @apply bg-brand-100;
   @apply rounded-2xl;
   @apply transform;
   @apply transform-gpu;  
@@ -51,8 +57,8 @@ html {
 }
 
 .thumbnail-back:hover:before{
-  @apply translate-x-2;
-  @apply translate-y-2;
+  @apply translate-x-4;
+  @apply translate-y-4;
 }
 .notion-viewport{
   z-index: -1;

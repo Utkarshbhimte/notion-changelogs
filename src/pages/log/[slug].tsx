@@ -81,12 +81,12 @@ const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => 
                     className="md:translate-y-12 transform"
                 >
                     <Image
-                        className="block rounded-2xl"
+                        className="rounded-2xl block"
+                        layout="fixed"
                         objectFit="cover"
                         width={650}
                         height={350}
                         src={postMetadata.thumbnail}
-                        alt="Banner"
                     />
                 </motion.div>
             </div>

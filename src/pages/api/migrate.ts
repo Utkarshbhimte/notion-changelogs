@@ -29,7 +29,7 @@ const metadataHandler: NextApiHandler = async (
             posts.map(post => db.put({
                 ...post,
                 key: `post::${post.slug}`,
-                thumbnail: defaultMapImageUrl(post.thumbnail, post.id)
+                thumbnail: post.thumbnail
             }))
         )
 
