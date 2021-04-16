@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { getAbsoluteURL } from 'src/libs/getAbsoluteUrl'
 
 export default function Meta() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
@@ -21,7 +22,7 @@ export default function Meta() {
       <meta
         key="twitter:image"
         name="twitter:image"
-        content={`${baseUrl}/logo.svg`}
+        content={getAbsoluteURL('/logo.svg')}
       />
       <meta
         key="twitter:creator"
@@ -31,13 +32,13 @@ export default function Meta() {
       <meta
         key="og:url"
         property="og:url"
-        content={`${baseUrl}${router.pathname}`}
+        content={getAbsoluteURL(router.pathname)}
       />
       <meta key="og:type" property="og:type" content="website" />
       <meta
         key="og:image"
         property="og:image"
-        content={`${baseUrl}/logo.svg`}
+        content={getAbsoluteURL('/logo.svg')}
       />
 
       <link
@@ -50,16 +51,17 @@ export default function Meta() {
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/apple-touch-icon.png"
+        href={getAbsoluteURL('/apple-touch-icon.png')}
       />
       <link
         rel="icon"
         type="image/png"
         sizes="196x196"
-        href="/favicon-196.png"
+        href={getAbsoluteURL('/favicon-196.png')}
       />
 
       <link rel="manifest" href="/manifest.json" />
+
       <meta name="theme-color" content="#ffffff" />
 
       <link rel="apple-touch-icon" href="apple-icon-180.png" />
