@@ -70,7 +70,6 @@ interface ChangelogPageProps {
     metadata: PageMetadata
 }
 const ChangelogPage: React.FC<ChangelogPageProps> = ({ postMetadata, data }) => {
-    console.log("🚀 ~ file: [slug].tsx ~ line 88 ~ postMetadata.thumbnail", postMetadata.thumbnail)
     return <div className="min-h-screen">
         <div className="container mx-auto my-8">
             <div className="relative md:h-96 my-6 shadow-lg rounded-2xl text-gray-500 flex items-center justify-center overflow-hidden" style={{ background: 'url(/gradient-background.jpg)' }}>
