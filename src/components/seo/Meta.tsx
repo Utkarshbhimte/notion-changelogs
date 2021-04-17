@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { getAbsoluteURL } from 'src/libs/getAbsoluteUrl'
 
 export default function Meta() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   const router = useRouter()
   return (
     <Head>
