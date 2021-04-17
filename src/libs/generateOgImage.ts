@@ -3,7 +3,7 @@ import { getAbsoluteURL } from 'src/libs/getAbsoluteUrl';
 
 export const generateOgImage = async (slug: string) => {
     // Start the browser with the AWS Lambda wrapper (playwright-aws-lambda)
-    const browser = await playwright.launchChromium();
+    const browser = await playwright.launchChromium({ args: ['--ignore-certificate-errors', '--no-sandbox'] });
     // Create a page with the Open Graph image size best practise
     const page = await browser.newPage({
         viewport: {
