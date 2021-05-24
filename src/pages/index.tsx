@@ -2,25 +2,24 @@ import React from 'react'
 import { HomeLayout } from 'src/components/HomeLayout'
 import { PostCard } from 'src/components/PostCard'
 import { PageMetadata, Post } from 'src/contracts/app'
-import { db } from 'src/libs/db'
-import { getPostsList } from 'src/libs/notion'
+import { getMetaData, getPostsList } from 'src/libs/notion'
 import { motion } from 'framer-motion'
 
 export const getStaticProps = async () => {
-
-  const metadata: PageMetadata = await db.get(`metadata`)
+  const metadata: PageMetadata = await getMetaData()
   const posts = await getPostsList()
 
   return {
     props: {
-      metadata, posts,
+      metadata,
+      posts,
     },
-    revalidate: 10
+    revalidate: 10,
   }
 }
 
 interface HomeProps {
-  metadata: PageMetadata;
+  metadata: PageMetadata
   posts: Post[]
 }
 
@@ -29,9 +28,9 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.5
-    }
-  }
+      staggerChildren: 0.5,
+    },
+  },
 }
 
 const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
@@ -42,8 +41,8 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
           <h1 className="text-6xl font-bold mb-6">{metadata.heading}</h1>
           <p className="text-gray-600 text-lg">{metadata.subheading}</p>
 
-          {
-            metadata.primary_button_text && <div className="flex items-center justify-center mt-12">
+          {metadata.primary_button_text && (
+            <div className="flex items-center justify-center mt-12">
               <a
                 href="#updates-wrap"
                 className="inline-flex items-center justify-center px-4 py-2 text-base font-medium  text-brand-800 border border-transparent rounded-md shadow-sm cursor-pointer whitespace-nowrap hover:text-brand-900"
@@ -58,8 +57,7 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
                 {metadata.primary_button_text}
               </a>
             </div>
-          }
-
+          )}
         </div>
 
         <motion.div
@@ -67,8 +65,11 @@ const Home: React.FC<HomeProps> = ({ metadata, posts }) => {
           initial="hidden"
           animate="show"
           id="updates-wrap"
-          className="grid gap-8 md:grid-cols-2 grid-cols-1 mx-auto mt-12 pb-24">
-          {posts?.map(post => <PostCard key={post.id} post={post} />)}
+          className="grid gap-8 md:grid-cols-2 grid-cols-1 mx-auto mt-12 pb-24"
+        >
+          {posts?.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
         </motion.div>
       </div>
     </div>

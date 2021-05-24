@@ -36,13 +36,10 @@ export const getMetaData = async (): Promise<PageMetadata> => {
 const ContentTitle = 'Content'
 export const getPostsList = async (): Promise<Post[]> => {
 
-    const notionData = await getDataFromNotion('6c34d08c16dd4c3f9535215c5fb5dfce')
+    const notionData = await getDataFromNotion(process.env.NEXT_PUBLIC_BASE_NOTION_ID)
 
     const metaDataCollection = getCollectionByHeading(ContentTitle, notionData)
     const collectionData = metaDataCollection.collection.data;
-
-
-
 
     const posts: Post[] = collectionData.map(a => {
         const [, , thumbnailUrl] = a['Thumbnail'].join(' ').split(',')

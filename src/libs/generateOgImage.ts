@@ -15,8 +15,6 @@ export const generateOgImage = async (slug: string) => {
     // Generate the full URL out of the given path (GET parameter)
     const url = getAbsoluteURL(`/post-image?slug=${slug}` || "")
 
-    console.log("🚀 ~ file: generateOgImage.ts ~ line 17 ~ generateOgImage ~ url", url)
-
     await page.goto(url, {
         waitUntil: 'networkidle',
         timeout: 15 * 1000
